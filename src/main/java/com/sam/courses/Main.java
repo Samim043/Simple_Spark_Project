@@ -42,12 +42,12 @@ public class Main {
             return new ModelAndView(model,"index.hbs");
             },new HandlebarsTemplateEngine());
 
-        post("/sign-in", (req, res)->{
+        post("/", (req, res)->{
             Map<String, String> model = new HashMap<>();
             String username = req.queryParams("username");
             res.cookie("username", username);
-            model.put("username", username);
-            return new ModelAndView(model,"sign-in.hbs");
+            res.redirect("/");
+            return null;
         }, new HandlebarsTemplateEngine());
 
         get("/ideas", (req, res) ->{
