@@ -2,9 +2,11 @@ package com.sam.courses.model;
 
 import com.github.slugify.Slugify;
 
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class CourseIdea {
     private String title;
@@ -16,7 +18,7 @@ public class CourseIdea {
         voters = new HashSet<>();
         this.title = title;
         this.creator = creator;
-        Slugify slugify = Slugify.builder().underscoreSeparator(true).build();
+        Slugify slugify = Slugify.builder().build();
         slug = slugify.slugify(title);
 
     }
@@ -29,6 +31,10 @@ public class CourseIdea {
     }
     public String getSlug() {
         return slug;
+    }
+
+    public List<String> getVoters(){
+        return  new ArrayList<>(voters);
     }
 
     public boolean addVoter(String voterUsername){
