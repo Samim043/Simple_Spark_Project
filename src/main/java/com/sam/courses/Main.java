@@ -67,7 +67,7 @@ public class Main {
         get("/ideas/:slug", (req, res)->{
            Map<String, Object> model = new HashMap<>();
            model.put("idea", dao.findBySlug(req.params("slug")));
-           return new ModelAndView(model, idea.hbs);
+           return new ModelAndView(model, "idea.hbs");
         }, new HandlebarsTemplateEngine());
 
         post("/ideas/:slug/vote", (req, res)->{
